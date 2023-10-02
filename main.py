@@ -68,7 +68,7 @@ if authentication_status == True:
         sexo = st.selectbox ("Sexo", ("Macho", "Hembra"))
         peso = st.number_input ("Peso")
         #imagen = st.file_uploader ('Añadir Imagen')
-        nuevo_animal = st.form_submit_button ("Password")
+        nuevo_animal = st.form_submit_button ("Agregar Nuevo Animal")
         
 """
     #Formulario de carga de datos Procesos animal
