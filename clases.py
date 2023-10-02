@@ -1,9 +1,24 @@
-def cantidad_letras_en_un_nombre(nombre):
-    print(len(nombre))
+import pandas as pd
 
-primer_nombre = cantidad_letras_en_un_nombre("Saori")
-segundo_nombre = cantidad_letras_en_un_nombre("alejandra")
-primer_apellido = cantidad_letras_en_un_nombre("Cepeda")
-segundo_apellido = cantidad_letras_en_un_nombre("Camacho")
+class CargaDatos:
+    """permitirá la carga de los datos"""
+    def carga_animal(self, nombre, raza, sexo, peso):
+        self.nombre = nombre
+        self.raza = raza
+        self.sexo = sexo
+        self.peso = peso
+        animal = {'Nombre_animal':nombre, 'raza':raza, 'sexo':sexo, 'peso':peso}
 
-print(primer_nombre + segundo_nombre + primer_apellido + segundo_apellido)
+    def carga_proceso(self, elegir_animal, elegir_periodo, elegir_alimentacion, elegir_plan_sanitario, elegir_rebanio, elegir_explotacion, elegir_peso):
+        self.elegir_animal = elegir_animal
+        self.elegir_periodo = elegir_periodo
+        self.elegir_plan_sanitario = elegir_plan_sanitario
+        self.elegir_rebanio = 
+
+    #Datos cargados a un dataframe
+    def carga_dataframe(self, df):
+        dataFrame = df
+        return dataFrame
+    
+
+

@@ -77,7 +77,7 @@ if authentication_status == True:
         elegir_periodo = st.selectbox ('periodo', periodo)
         elegir_alimentacion = st.selectbox ('alimentacion', alimentacion)
         elegir_plan_sanitario = st.selectbox ('plan_sanitario', plan_sanitario)
-        elegir_rebaño = st.selectbox ('rebaño', rebaño)
+        elegir_rebanio = st.selectbox ('rebaño', rebaño)
         elegir_explotacion = st.selectbox ('explotacion', explotacion)
         elegir_peso = st.selectbox ('peso', peso)
         nuevo_proceso = st.form_submit_button ("Agregar Proceso")
