@@ -9,7 +9,8 @@ import pandas as pd
 import numpy as pd
 #Insertar el munú de navegación
 from streamlit_option_menu import option_menu
-
+#Modulo para cargar datos
+from carga_datos import CargaDatos as cd
 #Configuraciones de la página
 st.set_page_config(page_title="Gestion Ovinos", page_icon="🐑")
 
@@ -69,12 +70,16 @@ if authentication_status == True:
         peso = st.number_input ("Peso")
         #imagen = st.file_uploader ('Añadir Imagen')
         nuevo_animal = st.form_submit_button ("Agregar Nuevo Animal")
-        
+        if nuevo_animal == True:
+            df_animales = cd.carga_animal(nombre, raza, sexo,peso).carga_dataframe()
+
+    st.write(df_animales)
 """
     #Formulario de carga de datos Procesos animal
     with st.form(key="carga_datos_procesos_animal"):
         elegir_animal = st.selectbox ('Animal', animal)
         elegir_periodo = st.selectbox ('periodo', periodo)
+        elegir_tratamiento = st.selectbox ('Tratamiento, tratamiento')
         elegir_alimentacion = st.selectbox ('alimentacion', alimentacion)
         elegir_plan_sanitario = st.selectbox ('plan_sanitario', plan_sanitario)
         elegir_rebanio = st.selectbox ('rebaño', rebaño)
