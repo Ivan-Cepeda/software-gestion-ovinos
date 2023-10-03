@@ -130,8 +130,8 @@ if authentication_status == True:
                     nuevo_peso = st.form_submit_button("Agregar Peso")
             
     if selected == "Dashboard":
-        None
+        st.markdown("En Construcción")
     if selected == "Chat":
-        None
+        st.markdown("En Construcción")
     
     
