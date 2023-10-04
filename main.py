@@ -15,7 +15,7 @@ import carga_datos as cd
 from con_firebase import FireBaseDB
 from firebase_admin import db
 
-path = ".gitignore\gestion-ovinos-firebase-adminsdk-v5u61-32dfae7bf3.json"
+path = "gestion-ovinos-firebase-adminsdk-v5u61-32dfae7bf3.json"
 url = "https://gestion-ovinos-default-rtdb.firebaseio.com/"
 
 fb_db = FireBaseDB(path,url)
