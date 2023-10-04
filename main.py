@@ -71,7 +71,7 @@ if authentication_status == True:
                 dic_animales = cd.carga_animal(nombre, raza, sexo, peso)
                 fb_db.escribir_registros(f'/animales/{nombre}', dic_animales)
                 res_animales = fb_db.leer_registros(f'/animales/{name}')
-                df_animales = cd.carga_dataframe(dic_animales) 
+                df_animales = cd.carga_dataframe(res_animales) 
                 st.write(df_animales)
 
     if selected == "Procesos":
