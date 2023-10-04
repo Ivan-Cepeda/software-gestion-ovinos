@@ -70,7 +70,7 @@ if authentication_status == True:
             if nuevo_animal == True:
                 dic_animales = cd.carga_animal(nombre, raza, sexo, peso)
                 #fb_db.escribir_registros(f'/animales/{nombre}', dic_animales)
-                r#es_animales = fb_db.leer_registros(f'/animales/{name}')
+                #es_animales = fb_db.leer_registros(f'/animales/{name}')
                 df_animales = cd.carga_dataframe(dic_animales) 
                 st.write(df_animales)
 
