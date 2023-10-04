@@ -12,13 +12,13 @@ from streamlit_option_menu import option_menu
 #Modulo para cargar datos
 import carga_datos as cd
 #Interacción Base de datos
-from con_firebase import FireBaseDB
-from firebase_admin import db
+#from con_firebase import FireBaseDB
+#from firebase_admin import db
 
-path = "gestion-ovinos-firebase-adminsdk-v5u61-32dfae7bf3.json"
-url = "https://gestion-ovinos-default-rtdb.firebaseio.com/"
+#path = "gestion-ovinos-firebase-adminsdk-v5u61-32dfae7bf3.json"
+#url = "https://gestion-ovinos-default-rtdb.firebaseio.com/"
 
-fb_db = FireBaseDB(path,url)
+#fb_db = FireBaseDB(path,url)
 #Configuraciones de la página
 st.set_page_config(page_title="Gestion Ovinos", page_icon="🐑")
 
@@ -69,9 +69,9 @@ if authentication_status == True:
             nuevo_animal = st.form_submit_button ("Agregar Nuevo Animal")
             if nuevo_animal == True:
                 dic_animales = cd.carga_animal(nombre, raza, sexo, peso)
-                fb_db.escribir_registros(f'/animales/{nombre}', dic_animales)
-                res_animales = fb_db.leer_registros(f'/animales/{name}')
-                df_animales = cd.carga_dataframe(res_animales) 
+                #fb_db.escribir_registros(f'/animales/{nombre}', dic_animales)
+                r#es_animales = fb_db.leer_registros(f'/animales/{name}')
+                df_animales = cd.carga_dataframe(dic_animales) 
                 st.write(df_animales)
 
     if selected == "Procesos":
