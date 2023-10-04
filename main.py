@@ -69,8 +69,8 @@ if authentication_status == True:
             nuevo_animal = st.form_submit_button ("Agregar Nuevo Animal")
             if nuevo_animal == True:
                 dic_animales = cd.carga_animal(nombre, raza, sexo, peso)
-                fb_db.escribir_registros("animales", dic_animales)
-                res_animales = fb_db.leer_registros("animales")
+                fb_db.escribir_registros(f'/animales/{nombre}', dic_animales)
+                res_animales = fb_db.leer_registros(f'/animales/{name}')
                 df_animales = cd.carga_dataframe(dic_animales) 
                 st.write(df_animales)
 
