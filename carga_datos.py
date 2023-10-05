@@ -11,8 +11,16 @@ def get_session_state(username, usernames):
     return session
 
 """permitirá la carga de los datos"""
-def carga_animal(nombre, raza, sexo, peso):
-    animal = {'Nombre_animal':nombre, 'raza':raza, 'sexo':sexo, 'peso':peso}
+def carga_animal(nombre, sexo, peso, fecha_de_nacimiento, raza, estado_fisiologico, aprovechamiento):
+    animal = {
+        'Nombre':nombre, 
+        'Sexo':sexo, 
+        'Peso':peso, 
+        'Raza':raza, 
+        'Fecha De Nacimiento':fecha_de_nacimiento, 
+        'Estado Fisiológico':estado_fisiologico, 
+        'Aprovechamiento':aprovechamiento
+        }
     return animal
 
 def carga_proceso(elegir_animal, elegir_periodo, elegir_tratamiento, elegir_alimentacion, elegir_plan_sanitario, elegir_rebanio, elegir_explotacion, elegir_peso):

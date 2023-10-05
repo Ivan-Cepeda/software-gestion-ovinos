@@ -12,8 +12,12 @@ from streamlit_option_menu import option_menu
 #Modulo para cargar datos
 import carga_datos as cd
 #Interacción Base de datos
-#from con_firebase import FireBaseDB
-#from firebase_admin import db
+from google.cloud import firestore
+import json
+key_dict = json.loads(st.secrets["textkey"])
+creds = service_account.Credentials.from_service_account_info(key_dict)
+db = firestore.Client(credentials=creds, project="streamlit-reddit")
+
 
 #path = "gestion-ovinos-firebase-adminsdk-v5u61-32dfae7bf3.json"
 #url = "https://gestion-ovinos-default-rtdb.firebaseio.com/"
@@ -62,18 +66,36 @@ if authentication_status == True:
         #Formulario de carga de datos animal
         with st.form(key="carga_datos_animal"):
             nombre = st.text_input ("Nombre_identificador")
-            raza = st.text_input ("Raza")
             sexo = st.selectbox ("Sexo", ("Macho", "Hembra"))
             peso = st.text_input ("Peso")
+            fecha_de_nacimiento = st.text_input ("Fecha de Nacimiento")
+            raza = st.text_input ("Raza")
+            estado_fisiologico = st.text_input ("Estado Fisiologico")
+            aprovechamiento = st.text_input ("Aprovechamiento")
+                     
             #imagen = st.file_uploader ('Añadir Imagen')
             nuevo_animal = st.form_submit_button ("Agregar Nuevo Animal")
-            if nuevo_animal == True:
-                dic_animales = cd.carga_animal(nombre, raza, sexo, peso)
-                #fb_db.escribir_registros(f'/animales/{nombre}', dic_animales)
-                #es_animales = fb_db.leer_registros(f'/animales/{name}')
-                df_animales = cd.carga_dataframe(dic_animales) 
-                st.write(df_animales)
+            if nuevo_animal:
+                load_animals = db.collection("animales").document(nombre)
+                load_animals.set({
+                    "Nombre": nombre,
+                    "Sexo": sexo,
+                    "Peso": peso,
+                    "Fecha De Nacimiento": fecha_de_nacimiento,
+                    "Raza": raza,
+                    "Estado Fisiologico": estado_fisiologico,
+                    "Aprovechamiento": aprovechamiento
+                })
+                
+        mostrar_animals = db.collection("animales")
+        for doc in mostrar_animals.stream():
+            animal = doc.to_dict()
+            nombre_animal = animal["Nombre"]
+            aprov = animal["Aprovechamiento"]
 
+        st.subheader(f"Nombre {nombre_animal}")
+        st.write(f"Aprovechamiento {nombre_animal}")
+           
     if selected == "Procesos":
             
             tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(["Proceso","Periodo", "Tratamiento", "Alimentación", "Plan Sanitario", "Rebaño", "Explotación", "Peso"])
