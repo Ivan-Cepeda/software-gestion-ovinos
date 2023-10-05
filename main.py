@@ -12,10 +12,12 @@ from streamlit_option_menu import option_menu
 #Modulo para cargar datos
 import carga_datos as cd
 #Interacción Base de datos
-from google.cloud import firestore
+
+from firebase_admin import credentials
+from firebase_admin import firestore
 import json
 key_dict = json.loads(st.secrets["textkey"])
-creds = service_account.Credentials.from_service_account_info(key_dict)
+creds = credentials.from_service_account_info(key_dict)
 db = firestore.Client(credentials=creds, project="streamlit-reddit")
 
 
